@@ -42,49 +42,13 @@ public class Main {
                 .withSurname("Heywood")
                 .build());
 
-        System.out.println("Menu" + "\n" + "Please select option");
-        Scanner in = new Scanner(System.in);
-        String input = in.next();
+        System.out.println("Menu" + "\n" + "Please select one of the following options: listE, add, edit, remove, return...");
 
-        if (input.equals("listE")) {
-            System.out.println(employees);
-        }
-        if (input.equals("add")){
-           Scanner inName = new Scanner(System.in);
-           String nameToAdd = inName.next();
-           Scanner inSurname = new Scanner(System.in);
-           String surnameToAdd = inSurname.next();
-           Scanner inGrossSalary = new Scanner(System.in);
-           Double grossSalaryToAdd = inGrossSalary.nextDouble();
-           Employee employeeToAdd = new Employee(nameToAdd, surnameToAdd, grossSalaryToAdd);
-           employees.add(employeeToAdd);
-            System.out.println(employees);
-        }
-
-        if (input.equals("edit")){
-            Scanner inId = new Scanner(System.in);
-            Integer idToEdit = inId.nextInt();
-            Scanner inName = new Scanner(System.in);
-            String nameToEdit = inName.next();
-            Scanner inSurname = new Scanner(System.in);
-            String surnameToEdit = inSurname.next();
-            Scanner inGrossSalary = new Scanner(System.in);
-            Double grossSalaryToEdit = inGrossSalary.nextDouble();
-            employees.get(idToEdit).getName().replaceAll("", nameToEdit);
-            employees.get(idToEdit).getSurname().replaceAll("", surnameToEdit);
-            employees.get(idToEdit).setGrossSalary(grossSalaryToEdit);
-            System.out.println(employees);
-        }
-
-        if (input.equals("remove")){
-            Scanner inId = new Scanner(System.in);
-            Integer idToRemove = inId.nextInt();
-            employees.remove(idToRemove);
-            System.out.println(employees);
-        }
-
-        if (input.equals("back")){
-            System.out.println("Menu" + "\n" + "Please select option");
-        }
+        Menu menu = new Menu();
+        menu.displayEmployees();
+        menu.addEmployee();
+        menu.editEmployee();
+        menu.removeEmployee();
+        menu.goBack();
     }
 }
