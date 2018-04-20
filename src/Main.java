@@ -11,7 +11,7 @@ public class Main {
                 .withName("Jack")
                 .withGrossSalary(5400.00)
                 .build());
-        employees.add( Employee.EmployeeBuilder.employeeBuilder()
+        employees.add(Employee.EmployeeBuilder.employeeBuilder()
                 .withGrossSalary(7100.00)
                 .withName("Terry")
                 .withSurname("Wilson")
@@ -26,12 +26,12 @@ public class Main {
                 .withName("Hanna")
                 .withGrossSalary(9500.00)
                 .build());
-        employees.add( Employee.EmployeeBuilder.employeeBuilder()
+        employees.add(Employee.EmployeeBuilder.employeeBuilder()
                 .withName("Mark")
                 .withGrossSalary(8000.00)
                 .withSurname("Williams")
                 .build());
-        employees.add( Employee.EmployeeBuilder.employeeBuilder()
+        employees.add(Employee.EmployeeBuilder.employeeBuilder()
                 .withSurname("Potato")
                 .withGrossSalary(7000.00)
                 .withName("Jane")
@@ -42,13 +42,40 @@ public class Main {
                 .withSurname("Heywood")
                 .build());
 
-        System.out.println("Menu" + "\n" + "Please select one of the following options: listE, add, edit, remove, return...");
-
         Menu menu = new Menu();
-        menu.displayEmployees();
-        menu.addEmployee();
-        menu.editEmployee();
-        menu.removeEmployee();
-        menu.goBack();
+        menu.printMainMenu();
+
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.next();
+
+        if (userInput.equals("listE")) {
+            System.out.println(employees);
+        }
+
+        if (userInput.equals("edit")) {
+            System.out.println("Please select the ID...");
+            Integer idToEdit = scanner.nextInt();
+            System.out.println("Please type new name...");
+            String newName = userInput;
+            System.out.println("Please type new surname...");
+            String newSurname = userInput;
+            System.out.println("Please type new gross salary...");
+            Double newGrossSalary = scanner.nextDouble();
+            employees.get(idToEdit).getName().replaceAll("", newName);
+            employees.get(idToEdit).getSurname().replaceAll("", newSurname);
+            employees.get(idToEdit).setGrossSalary(newGrossSalary);
+            System.out.println(employees);
+        }
+
+        if (userInput.equals("remove")) {
+            System.out.println("Please type ID to be removed...");
+            Integer idToRemove = scanner.nextInt();
+            employees.remove(idToRemove);
+            System.out.println(employees);
+        }
+
+        if (userInput.equals("return")) {
+            System.out.println("Menu" + "\n" + "Please select option");
+        }
     }
 }

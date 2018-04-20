@@ -39,6 +39,14 @@ public class Employee {
         this.grossSalary = grossSalary;
     }
 
+    public List<Employee> getList() {
+        return list;
+    }
+
+    public void setList(List<Employee> list) {
+        this.list = list;
+    }
+
     public static class EmployeeBuilder {
 
         private String name;
