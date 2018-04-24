@@ -42,40 +42,47 @@ public class Main {
                 .withSurname("Heywood")
                 .build());
 
-        Menu menu = new Menu();
-        menu.printMainMenu();
+        String command = "";
+        do {
+            Menu menu = new Menu();
+            command = menu.printMainMenu();
 
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.next();
+            if ("listE".equals(command)) {
+                System.out.println(employees);
+            }
 
-        if (userInput.equals("listE")) {
-            System.out.println(employees);
-        }
+            if ("add".equals(command)) {
+                menu.addEmployeeMenu();
+                System.out.println(employees);
+            }
 
-        if (userInput.equals("edit")) {
-            System.out.println("Please select the ID...");
-            Integer idToEdit = scanner.nextInt();
-            System.out.println("Please type new name...");
-            String newName = userInput;
-            System.out.println("Please type new surname...");
-            String newSurname = userInput;
-            System.out.println("Please type new gross salary...");
-            Double newGrossSalary = scanner.nextDouble();
-            employees.get(idToEdit).getName().replaceAll("", newName);
-            employees.get(idToEdit).getSurname().replaceAll("", newSurname);
-            employees.get(idToEdit).setGrossSalary(newGrossSalary);
-            System.out.println(employees);
-        }
+            if ("edit".equals(command)) {
+                System.out.println("Please select the ID...");
+                Scanner editScanner = new Scanner(System.in);
+                Integer idToEdit = editScanner.nextInt();
+                System.out.println("Please type new name...");
+                String newName = editScanner.next();
+                System.out.println("Please type new surname...");
+                String newSurname = editScanner.next();
+                System.out.println("Please type new gross salary...");
+                Double newGrossSalary = editScanner.nextDouble();
+                employees.get(idToEdit).getName().replaceAll("", newName);
+                employees.get(idToEdit).getSurname().replaceAll("", newSurname);
+                employees.get(idToEdit).setGrossSalary(newGrossSalary);
+                System.out.println(employees);
+            }
 
-        if (userInput.equals("remove")) {
-            System.out.println("Please type ID to be removed...");
-            Integer idToRemove = scanner.nextInt();
-            employees.remove(idToRemove);
-            System.out.println(employees);
-        }
+            if ("remove".equals(command)) {
+                System.out.println("Please type ID to be removed...");
+                Scanner removeScanner = new Scanner(System.in);
+                Integer idToRemove = removeScanner.nextInt();
+                employees.remove(idToRemove);
+                System.out.println(employees);
+            }
 
-        if (userInput.equals("return")) {
-            System.out.println("Menu" + "\n" + "Please select option");
-        }
+            if ("return".equals(command)) {
+                System.out.println("Menu" + "\n" + "Please select option");
+            }
+        } while (!"END".equalsIgnoreCase(command));
     }
 }
