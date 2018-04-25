@@ -37,7 +37,7 @@ public class Menu {
         String surnameToAdd = input.next();
         System.out.println("Please type gross salary...");
         Double grossSalaryToAdd = input.nextDouble();
-        for (int i = 1; i > employeesToAdd.size(); i++) {
+        while (!"END".equals(input)) {
             Employee employeeToAdd = new Employee(nameToAdd, surnameToAdd, grossSalaryToAdd);
             employeesToAdd.add(employeeToAdd);
         }
