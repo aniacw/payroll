@@ -4,7 +4,6 @@ public class Employee {
     private String name;
     private String surname;
     private Double grossSalary;
-    private List<Employee> list;
 
     public Employee() {
     }
@@ -37,14 +36,6 @@ public class Employee {
 
     public void setGrossSalary(Double grossSalary) {
         this.grossSalary = grossSalary;
-    }
-
-    public List<Employee> getList() {
-        return list;
-    }
-
-    public void setList(List<Employee> list) {
-        this.list = list;
     }
 
     public static class EmployeeBuilder {

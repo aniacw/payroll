@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,30 +52,21 @@ public class Main {
 
             if ("add".equals(command)) {
                 menu.addEmployeeMenu();
+                System.out.println(menu.employeesToAdd);
                 System.out.println(employees);
             }
 
             if ("edit".equals(command)) {
-                System.out.println("Please select the ID...");
-                Scanner editScanner = new Scanner(System.in);
-                Integer idToEdit = editScanner.nextInt();
-                System.out.println("Please type new name...");
-                String newName = editScanner.next();
-                System.out.println("Please type new surname...");
-                String newSurname = editScanner.next();
-                System.out.println("Please type new gross salary...");
-                Double newGrossSalary = editScanner.nextDouble();
-                employees.get(idToEdit).getName().replaceAll("", newName);
-                employees.get(idToEdit).getSurname().replaceAll("", newSurname);
-                employees.get(idToEdit).setGrossSalary(newGrossSalary);
+                menu.editEmployeeMenu();
+                employees.get(menu.getIdToEdit()).getName().replaceAll("", menu.getNewName());
+                employees.get(menu.getIdToEdit()).getSurname().replaceAll("", menu.getNewSurname());
+                employees.get(menu.getIdToEdit()).setGrossSalary(menu.getNewGrossSalary());
                 System.out.println(employees);
             }
 
             if ("remove".equals(command)) {
-                System.out.println("Please type ID to be removed...");
-                Scanner removeScanner = new Scanner(System.in);
-                Integer idToRemove = removeScanner.nextInt();
-                employees.remove(idToRemove);
+                menu.removeEmployeeMenu();
+                employees.remove(menu.getIdToRemove());
                 System.out.println(employees);
             }
 
